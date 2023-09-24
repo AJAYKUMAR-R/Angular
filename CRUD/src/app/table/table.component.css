@@ -1,0 +1,15 @@
+.mat-mdc-raised-button:not(:disabled) {
+    background-color: rgb(180, 3, 3);
+  }
+
+.wrapper{
+  width: 70% !important;
+  margin: auto;
+}
+
+.flex-own{
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+  

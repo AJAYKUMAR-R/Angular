@@ -1,0 +1,67 @@
+
+<div class="container p-3 flex-own">
+ <div>
+  <label for="inputBox" class="m-3">Search</label>
+  <input type="text" (ngModelChange)="search($event)" id="inputBox" [ngModel]="searchParam" />
+ </div>
+
+ <div>
+  <label for="dropdown"  class="m-3">Fiield</label>
+  <select id="dropdown"  [(ngModel)]="searchParamValue">
+    <option *ngFor="let e of dropdownValues"  value="{{e}}">{{e}}</option>
+    <!-- <option value="option2">Option 2</option>
+    <option value="option3">Option 3</option> -->
+  </select>
+ </div>
+</div>
+<div class="mat-elevation-z8" class="wrapper">
+    <table matSort mat-table atSort (matSortChange)="announceSortChange($event)" [dataSource]="dataSource" >
+      <!-- <ng-container matColumnDef="SNo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by SNo."> S.No </th>
+        <td mat-cell *matCellDef="let element"> {{element.SNo}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="Student_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by SNo."> Student_id </th>
+        <td mat-cell *matCellDef="let element"> {{element.studentId}} </td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Name"> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.studentName}} </td>
+      </ng-container>
+      <ng-container  matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header sortActionDescription="Sort by Age"> Age </th>
+        <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+      <ng-container matColumnDef="grade" > 
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Grade."> Grade </th>
+        <td mat-cell *matCellDef="let element"> {{element.grade}} </td>
+      </ng-container>
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef> Update </th>
+        <td mat-cell *matCellDef="let element" [routerLink]="['/update',element.studentId]"><button class="btn btn-warning">
+          <span class="material-symbols-outlined">
+            edit
+            </span>
+        </button></td>
+      </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button  class="btn-danger" (click)="openDialog(element.studentId)"> 
+            <i class="material-icons">delete</i>
+          </button> 
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator  [pageSizeOptions]="pageSizeOptions"
+                    [pageSize]="pageSize"
+                    [pageIndex]="currentPage"
+                    [length]="totalItems"
+                    (page)="onPageChange($event)"
+                   showFirstLastButtons
+                  >
+    </mat-paginator>
+  </div>
+ 

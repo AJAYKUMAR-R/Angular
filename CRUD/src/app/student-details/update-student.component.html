@@ -1,0 +1,56 @@
+<div class="container center-tag">
+    <form [formGroup]="CreateForm"  class="p-3">
+      <h1 class="mt-2 text-center align-from-top">{{pageHeading}}</h1>
+        <!-- <div class="form-group p-1">
+          <label for="name" class="m-2">Id</label>
+          <input  type="number" class="form-control" id="Id" placeholder="Enter your Id" formControlName="Id">
+          <span class="text-danger" *ngIf="Id && Id.touched && Id.hasError('required')">Id is required</span>
+        </div> -->
+        <div class="form-group p-1">
+          <label for="name" class="m-2">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="Name">
+          <div *ngIf="Name && Name.invalid && (Name.dirty || Name.touched)" class="text-danger">
+            <div *ngIf="Name.errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="Name.errors?.['minlength']">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="Name.errors?.['maxlength']">
+              Name must be maximum 6 character
+            </div>
+          </div>
+        </div>
+        <div class="form-group p-1">
+          <label for="age" class="m-2">Age</label>
+          <input type="number" class="form-control" id="age" placeholder="Enter your age" formControlName="Age">
+          <div *ngIf="Age && Age.invalid && (Age.dirty || Age.touched)" class="text-danger">
+            <div *ngIf="Age.errors?.['required']">
+              Age is required.
+            </div>
+            <div *ngIf="Age.errors?.['range']">
+              Age must be  1 to 18 range
+            </div>
+          </div>
+        </div>
+        <div class="form-group p-1">
+          <label for="marks" class="m-2">Grade</label>
+          <input type="number" class="form-control" id="marks" placeholder="Enter your marks" formControlName="Grade">
+          <div *ngIf="Grade && Grade.invalid && (Grade.dirty || Grade.touched)" class="text-danger">
+            <div *ngIf="Grade.errors?.['required']">
+              Grade is required.
+            </div>
+            <div *ngIf="Grade.errors?.['grade']">
+              Grade must be  1 to 12 range
+            </div>
+          </div>
+        </div>
+        <div *ngIf="response.length > 0" class="text-danger">
+          {{response}}
+      </div>
+        <div class="container text-center mt-3">
+          <input mat-raised-button class="btn btn-primary" type="button" value="Submit" (click)="openDialog()">
+        </div>
+        
+    </form>
+</div>

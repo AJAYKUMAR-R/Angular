@@ -1,0 +1,39 @@
+//Code on client side loading Entire Data
+  // intiateSource(){
+  //   const listStudents = this.list.getStudent()
+  //   .subscribe(
+  //     (response:ResponsesData)=>{
+  //       const listStudents = response.data.map((element:Student,index:number)=>{
+  //         return {
+  //           SNo:index+1,
+  //           studentId :element.studentId,
+  //           name:element.studentName,
+  //           age:element.age,
+  //           grade:element.grade
+  //         }
+  //       })
+  //         this.dataSource.data = listStudents;
+  //     }
+  //   )   
+  //   this.subscription.push(listStudents); 
+  // }
+
+   //geting the total count for pagination
+  // getTotalCounts(){
+  //   const totalcounts = this.pagination.getTotalCount().subscribe({
+  //     next:(response)=>{
+  //       if(response.data != null){
+  //          this.totalItems = response.data
+           
+  //       }else{
+  //         const totalCountError = this.dialog.open(DialogComponent,{
+  //           data: {
+  //             isbutton:false,
+  //             title:"Error" + response.status,
+  //             description:response.responseMessage
+  //           }
+  //         });
+  //       }
+  //     }
+  //   });
+  // }
