@@ -4,6 +4,7 @@ import {Student} from 'src/Model/Student';
 import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import { InteractionService } from './interaction.service';
+import { LoginService } from 'src/Service/credential/login.service';
 
 @Component({
   selector: 'app-root',
@@ -21,6 +22,14 @@ export class AppComponent implements AfterViewInit,OnInit{
   count:number = 0;
 
   name:string = "000";
+
+  registerUser(){
+    // this.credential.postUser('').subscribe({
+    //   next:(res)=>{
+    //     console.log(res);
+    //   }
+    // })
+  }
 
   // formGroup?: FormGroup;
   // input = new FormControl('');
@@ -90,7 +99,7 @@ ngAfterViewInit(): void {
 
 
 
- constructor(private list:ModelService,private inter:InteractionService) {
+ constructor(private list:ModelService,private inter:InteractionService,private credential:LoginService) {
 
   
 

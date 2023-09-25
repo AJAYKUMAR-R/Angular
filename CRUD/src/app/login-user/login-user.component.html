@@ -1,0 +1,35 @@
+<div class="container center-tag">
+    <form [formGroup]="LoginForm"  class="p-3">
+        <h1 class="mt-2 text-center align-from-top">Login User</h1>
+          <div class="form-group p-1">
+            <label for="name" class="m-2">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="userName">
+            <div *ngIf="userName && userName.invalid && (userName.dirty || userName.touched)" class="text-danger">
+              <div *ngIf="userName.errors?.['required']">
+                Name is required.
+              </div>
+              <div *ngIf="userName.errors?.['minlength']">
+                Name must be at least 4 characters long.
+              </div>
+              <div *ngIf="userName.errors?.['maxlength']">
+                Name must be maximum 6 character
+              </div>
+            </div>
+          </div>
+          <div class="form-group p-1">
+            <label for="age" class="m-2">Age</label>
+            <input type="text" class="form-control" id="age" placeholder="Enter your age" formControlName="userPassword">
+            <div *ngIf="userPassword && userPassword.invalid && (userPassword.dirty || userPassword.touched)" class="text-danger">
+              <div *ngIf="userPassword.errors?.['required']">
+                Age is required.
+              </div>
+            </div>
+          </div>
+          <div *ngIf="response.length > 0" class="text-danger">
+            {{response}}
+        </div>
+          <div class="container text-center mt-3">
+            <input mat-raised-button class="btn btn-primary" type="button" value="Submit" (click)="SignIn()">
+          </div>
+      </form>
+</div>

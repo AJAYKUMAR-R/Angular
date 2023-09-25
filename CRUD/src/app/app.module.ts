@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,6 +22,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DialogComponent} from './dialog-component/dialog-component.component';
 import { ErrorComponent } from './error/error.component';
+import { LoginUserComponent } from './login-user/login-user.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { TokenInterceptor } from 'src/interceptors/token.interceptor';
 
 @NgModule({
     declarations: [
@@ -31,9 +34,17 @@ import { ErrorComponent } from './error/error.component';
         DashBoradComponent,
         DialogComponent,
         ErrorComponent,
+        LoginUserComponent,
+        RegisterUserComponent,
       
     ],
-    providers: [],
+    providers: [
+        {
+            provide:HTTP_INTERCEPTORS,
+            useClass:TokenInterceptor,
+            multi:true
+        }
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,

@@ -131,7 +131,7 @@ export class studentDetailsComponent implements OnInit,OnDestroy{
     //checking Form Valid
     if(this.CreateForm.valid){
     const post = this.list.postStudent({
-      studentName:(this.Name?.value),
+        studentName:(this.Name?.value),
         age:this.Age?.value,
         grade:this.Grade?.value
       }).subscribe({
