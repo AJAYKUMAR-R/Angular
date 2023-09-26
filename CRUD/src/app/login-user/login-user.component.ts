@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ResponsesData } from 'src/Model/ResponseData';
+import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
 import { Validation } from 'src/utils/Validations/Validation';
 
@@ -15,7 +16,7 @@ export class LoginUserComponent implements OnInit{
   /**
    *
    */
-  constructor(private cred:LoginService,private router:Router ) {
+  constructor(private cred:LoginService,private router:Router,private auth:AuthorizeService ) {
     
   }
 
@@ -49,6 +50,10 @@ export class LoginUserComponent implements OnInit{
         next:(res:ResponsesData)=>{
           if(res != null){
             this.cred.storeToken(res.data);
+            //this will add the user name and Role 
+            const payload = this.cred.decodedToken();
+            this.auth.setName(payload.name);
+            this.auth.setRole(payload.role);
             this.router.navigate(['table']);
           }
         },

@@ -29,7 +29,7 @@ export class LoginService {
   }
 
   getToken(){
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
   }
 
   isLoggedIn(): boolean{
@@ -44,14 +44,21 @@ export class LoginService {
   decodedToken(){
     const jwt = new JwtHelperService();
     const token = this.getToken()!;
+    if(token === null){
+      console.log("Token is not There");
+    }else{
+      console.log("Token is There");
+    }
     console.log(jwt.decodeToken(token));
     return jwt.decodeToken(token)
+  
   }
 
   getNameofUser(){
     if(this.payload)
     return this.payload.name
   }
+
   getRolefUser(){
     if(this.payload)
     return this.payload.role;

@@ -93,8 +93,8 @@ greetBind(name:string){
 @ViewChild(TableComponent,{static:true}) tableComponent!:TableComponent;
 
 ngAfterViewInit(): void {
-  this.textInput.nativeElement.focus();
-  console.log(this.tableComponent.dataSource.data)
+  //this.textInput.nativeElement.focus();
+  //console.log(this.tableComponent.dataSource.data)
 }
 
 

@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { LoginService } from 'src/Service/credential/login.service';
+import { AuthorizeService } from 'src/Service/auth/authorize.service';
 
 @Component({
   selector: 'app-dash-borad',
@@ -20,7 +21,7 @@ export class DashBoradComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private cred:LoginService) {}
+  constructor(private breakpointObserver: BreakpointObserver,private cred:LoginService,private auth:AuthorizeService) {}
   ngOnInit(): void {
    this.getDetails();
   }
@@ -30,9 +31,10 @@ export class DashBoradComponent implements OnInit{
   }
 
   getDetails(){
-    this.name = this.cred.getNameofUser();
-    this.role = this.cred.getRolefUser();
-    
+    this.auth.getName().subscribe((res)=>{
+      const nameFromToken = this.cred.getNameofUser();
+      this.name = res || nameFromToken;
+    }) 
   }
   
 
