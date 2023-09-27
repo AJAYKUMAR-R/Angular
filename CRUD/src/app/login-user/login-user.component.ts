@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ResponsesData } from 'src/Model/ResponseData';
@@ -6,12 +6,17 @@ import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
 import { Validation } from 'src/utils/Validations/Validation';
 
+
 @Component({
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
-  styleUrls: ['./login-user.component.css']
+  styleUrls: ['./login-user.component.css'],
+  encapsulation:ViewEncapsulation.None
 })
 export class LoginUserComponent implements OnInit{
+
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
 
   /**
    *

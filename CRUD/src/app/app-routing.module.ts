@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Observable, Observer } from 'rxjs';
-import { DashBoradComponent } from './dash-borad/dash-borad.component';
 import { ErrorComponent } from './error/error.component';
 import { TableComponent } from './table/table.component';
 import { studentDetailsComponent } from './student-details/update-student.component';

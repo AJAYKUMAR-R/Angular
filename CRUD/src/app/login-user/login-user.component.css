@@ -1,8 +1,49 @@
-.wrraper{
+/* .wrraper{
     height: 100%;
 }
 .center-tag{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     width: 60%;
 }
+ */
 
+ 
+
+ .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #77ba95;
+    min-height: 100vh; 
+}
+
+.my-form {
+    width: 350px;
+    height: 420px; /* Adjust the width as needed */
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.fit-icons{
+  margin-top: 10px;
+}
+
+.pos-1{
+    margin-top:30px;
+}
+
+.signUp{
+  padding-top:10px;
+}
+
+.size-icon{
+  font-size: xx-large;
+  padding: 10px 5px;
+}
+
+
+
+  
+  

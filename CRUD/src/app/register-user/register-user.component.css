@@ -1,0 +1,29 @@
+
+ .center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #77ba95;
+    min-height: 100vh; 
+}
+
+.my-form {
+    width: 550px;
+    min-height: 600px;  /* Adjust the width as needed */
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.hide-element{
+    display: none;
+}
+
+.show-element{
+    display: block;
+}
+
+/* .form-group{
+    height: 30px;
+} */

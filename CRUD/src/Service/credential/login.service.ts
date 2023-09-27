@@ -25,6 +25,7 @@ export class LoginService {
   }
 
   storeToken(tokenValue: string){
+    //session storage
     localStorage.setItem('token', tokenValue)
   }
 
@@ -50,8 +51,7 @@ export class LoginService {
       console.log("Token is There");
     }
     console.log(jwt.decodeToken(token));
-    return jwt.decodeToken(token)
-  
+    return jwt.decodeToken(token)  
   }
 
   getNameofUser(){
