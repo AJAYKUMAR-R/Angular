@@ -18,6 +18,9 @@
               <div class="mx-2" *ngIf="userEmail.errors?.['required']">
                 Email is required.
               </div>
+              <div class="mx-2" *ngIf="userEmail.errors?.['pattern']">
+                Email Format is Incorrect.
+              </div>
             </div>
           </div>
         </div>
@@ -28,6 +31,10 @@
               <div class="mx-2" *ngIf="userPassword.errors?.['required']">
                 Password is required.
               </div>
+              <div class="mx-2" *ngIf="userPassword.errors?.['pattern']">
+                Password  Atleast have one upper case ,lower case  and special character <br>
+                should atleast contains 8 charcater
+              </div>
             </div>
         </div>
         <div class="form-group">
@@ -37,12 +44,16 @@
               <div class="mx-2" *ngIf="userConfirmPassword.errors?.['required']">
                 Confirm Password is required.
               </div>
+              <div class="mt-2" *ngIf="userConfirmPassword.errors?.['pattern']">
+                Password  Atleast have one upper case ,lower case  and special character <br>
+                should atleast contains 8 charcater
+              </div>
             </div>
         </div>
         <div class="row">
           <div class="form-group col-md-6">
             <label for="name" class="m-2">Country</label>
-            <input type="password" class="form-control" id="country" placeholder="Enter your country" formControlName="country">
+            <input type="text" class="form-control" id="country" placeholder="Enter your country" formControlName="country">
             <div *ngIf="userCountry && userCountry.invalid && (userCountry.dirty || userCountry.touched)" class="text-danger">
               <div class="mx-2" *ngIf="userCountry.errors?.['required']">
                 Country is required.
@@ -60,7 +71,7 @@
         </div>
         <div class="form-group">
             <label for="name" class="m-2">Pincode</label>
-            <input type="password" class="form-control" id="pincode" placeholder="Enter your pincode" formControlName="pincode">
+            <input type="number" class="form-control" id="pincode" placeholder="Enter your pincode" formControlName="pincode">
             <div *ngIf="userPincode && userPincode.invalid && (userPincode.dirty || userPincode.touched)" class="text-danger">
               <div class="mx-2" *ngIf="userPincode.errors?.['required']">
                 Pincode is required.
@@ -69,6 +80,15 @@
           </div>
         <button type="submit" class="btn btn-primary mt-2" (click)="SignUp()">Sign in</button>
       </form>
+      <div class="card text-white bg-danger mb-3" style="min-width: 35rem;height:350px;" *ngIf="errorArray.length > 0">
+        <div class="card-header">Summary of the Form</div>
+        <div class="card-body">
+          <h5 class="card-title">Error form can't be submitted</h5>
+          <ul *ngFor="let i of errorArray">
+            <li class="card-text">{{i}}</li>
+          </ul>
+        </div>
+      </div>
 </div>
 
 

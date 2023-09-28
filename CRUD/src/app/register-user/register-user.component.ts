@@ -1,9 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
+import { Validation } from 'src/utils/Validations/Validation';
 
 @Component({
   selector: 'app-register-user',
@@ -11,6 +13,8 @@ import { LoginService } from 'src/Service/credential/login.service';
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent {
+
+   errorArray:string[] = []
 
   constructor(private cred:LoginService,private router:Router,private auth:AuthorizeService ) {
     
@@ -20,19 +24,22 @@ export class RegisterUserComponent {
 
   registerForm!:FormGroup ;
 
+  passwordRegx:RegExp =/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+|~=`{}\[\]:;"'<>,.?/])(?!.*\s).{8,}$/;
+  mailRegex:RegExp = /^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/;
+
   ngOnInit(): void {
     this.registerForm = new FormGroup({
       name:new FormControl('',[Validators.required]),
-      email:new FormControl('',[Validators.required]),
-      password:new FormControl('',[Validators.required]),
-      confirmPassword:new FormControl('',[Validators.required]),
+      email:new FormControl('',[Validators.required,Validators.pattern(this.mailRegex)]),
+      password:new FormControl('',[Validators.required,Validators.pattern(this.passwordRegx)]),
+      confirmPassword:new FormControl('',[Validators.required,Validators.pattern(this.passwordRegx)]),
       pincode:new FormControl('',[Validators.required]),
       country:new FormControl('',[Validators.required]),
-      role:new FormControl('',[Validators.required])
+      role:new FormControl('Admin',[Validators.required])
     })
   }
 
-
+  
   get userName(){
     return this.registerForm?.get('name');
   }
@@ -62,26 +69,53 @@ export class RegisterUserComponent {
 
 
   SignUp(){
-    if(this.registerForm.valid === true){
-      this.cred.SignIn({
-        Username : this.userName?.value,
-        Password : this.userPassword?.value
+    this.errorArray.splice(0,this.errorArray.length);
+    //if(this.registerForm.valid === true){
+      //var flag = Validation.confirmPasswordCheck(this.userPassword?.value,this.userConfirmPassword?.value);
+      //if(!flag){
+        //this.errorArray.push("Password and Confirm password is not matching");
+     // }
+      this.cred.SignUp({
+        StudentId:0,
+        StudentName : this.userName?.value,
+        Email:this.userEmail?.value,
+        Password : this.userPassword?.value,
+        ConfirmPassword : this.userPassword?.value,
+        Pincode:parseInt(this.userPincode?.value),
+        Country:this.userCountry?.value,
+        Roles:this.userRole?.value
       }).subscribe({
         next:(res:ResponsesData)=>{
-          if(res != null){
-            this.cred.storeToken(res.data);
-            //this will add the user name and Role 
-            const payload = this.cred.decodedToken();
-            this.auth.setName(payload.name);
-            this.auth.setRole(payload.role);
-            this.router.navigate(['table']);
+          if(res.data === true){
+            this.registerForm.reset();
           }
         },
-        error:(err)=>{
-          console.log(err);
+        error:(response:HttpErrorResponse)=>{
+          let ValidationError = response.error.errors;
+          ValidationError["StudentName"]?.forEach((item:string)=>{
+            this.errorArray.push(item);
+          }) 
+          ValidationError["Email"]?.forEach((item:string)=>{
+            this.errorArray.push(item);
+          }) 
+          ValidationError["Password"]?.forEach((item:string)=>{
+            this.errorArray.push(item);
+          }) 
+          ValidationError["ConfirmPassword"]?.forEach((item:string)=>{
+            this.errorArray.push(item);
+          }) 
+          ValidationError["Pincode"].forEach((item:string)=>{
+            this.errorArray.push(item);
+          }) 
+          ValidationError["Country"]?.forEach((item:string)=>{
+            this.errorArray.push(item);
+          }) 
+          ValidationError["Roles"]?.forEach((item:string)=>{
+            this.errorArray.push(item);
+          }) 
         }
       })
     }
   }
 
-}
+//}

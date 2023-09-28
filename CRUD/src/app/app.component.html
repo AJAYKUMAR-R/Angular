@@ -61,13 +61,12 @@ Name
 
 <h1>{{count}}</h1>
 
-<input type="text" [formControl]="input">
+<input type="text" [formControl]="input" (ngModelChange)="chck()">
 
-<h1>{{input.value}}</h1> -->
+<h1>{{input.hasError("pattern")}}</h1> -->
+<!-- 
+<app-login-user></app-login-user> -->
 
-<app-login-user></app-login-user>
-
-<!-- <app-register-user></app-register-user> -->
+<app-register-user></app-register-user>
 
 <!-- <button (click)="registerUser()">Register</button> -->
-<!-- <app-login-user></app-login-user> -->

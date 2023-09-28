@@ -1,10 +1,11 @@
 import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ModelService } from 'src/Service/api-service/model.service';
 import {Student} from 'src/Model/Student';
-import { FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { TableComponent } from './table/table.component';
 import { InteractionService } from './interaction.service';
 import { LoginService } from 'src/Service/credential/login.service';
+import { Validation } from 'src/utils/Validations/Validation';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,18 @@ export class AppComponent implements AfterViewInit,OnInit{
   // formGroup?: FormGroup;
   // input = new FormControl('');
 
-  input:FormControl = new FormControl('AJay');
+  regular:RegExp =/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+|~=`{}\[\]:;"'<>,.?/])(?!.*\s).{8,}$/;
+
+  chck(){
+    let st = this.input.value;
+    if (this.regular.test(st)) {
+      console.log("Valid password");
+    } else {
+      console.log("Invalid password");
+    }
+  }
+
+  input:FormControl = new FormControl('',[Validators.pattern(this.regular)]);
 
   ngOnInit(): void {
   

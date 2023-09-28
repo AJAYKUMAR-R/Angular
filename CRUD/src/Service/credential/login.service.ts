@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environmentsVariables } from 'src/environments/crud-api/environments';
+import { RegisterUser } from 'src/Model/Register';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { User } from 'src/Model/User';
 
@@ -17,11 +18,15 @@ export class LoginService {
   private readonly payload:any;
 
   constructor(private http:HttpClient,private router:Router) { 
-    this.payload = this.decodedToken();
+    //this.payload = this.decodedToken();
   }
 
   SignIn(loginuser:User):Observable<ResponsesData>{
     return this.http.post<ResponsesData>(this.url,loginuser);
+  }
+
+  SignUp(register:RegisterUser):Observable<ResponsesData>{
+    return this.http.post<ResponsesData>(this.url + "/SignUp",register);
   }
 
   storeToken(tokenValue: string){

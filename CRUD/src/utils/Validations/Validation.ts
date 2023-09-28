@@ -30,4 +30,32 @@ export class Validation{
           return null; // No error, valid number in range
         };
       }
-}
+
+
+      static passwordPattern() {
+        return (control: AbstractControl): ValidationErrors | null => {
+          const value = control.value;
+          if (value === null || value === undefined || value === '') {
+            return { required: true };
+          }
+          return null; // No error, valid number in range
+        };
+      }
+
+
+      static confirmPasswordCheck(password: string, confirmPassword: string):boolean {
+          if((password != undefined) && (confirmPassword != undefined)){
+            let pass = password.replace(" ",""); 
+            let confirmpass = confirmPassword.replace(" ",""); 
+            if (pass === confirmpass) {
+              return  true;
+            }else{
+              return false;
+            }
+          }else{
+            return false;
+          }
+        }
+          // No error, valid number in range
+};
+
