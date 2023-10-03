@@ -1,18 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, isStandalone, OnDestroy, OnInit } from '@angular/core';
 import { ModelService } from 'src/Service/api-service/model.service';
 //For, group for grouping the form Control
-import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DialogComponent} from '../dialog-component/dialog-component.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Validation } from 'src/utils/Validations/Validation';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-student-details',
   templateUrl: './update-student.component.html',
-  styleUrls: ['./update-student.component.css']
+  styleUrls: ['./update-student.component.css'],
+  standalone:true,
+  imports:[ReactiveFormsModule,CommonModule]
 })
 export class studentDetailsComponent implements OnInit,OnDestroy{
 

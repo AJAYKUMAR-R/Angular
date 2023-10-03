@@ -1,0 +1,25 @@
+
+.center-container-register {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #77ba95;
+    min-height: 100vh; 
+    padding: 5rem;
+  
+}
+
+.center-container-register .my-form-register {
+    padding: 20px;
+    border-radius: 5px;
+    width: 600px;
+    min-height: 100vh;  /* Adjust the width as needed */
+    padding: 20px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.center-container-register .my-form-register .form-group{
+    height: 120px;
+}

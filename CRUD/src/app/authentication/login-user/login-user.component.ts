@@ -1,6 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Route, Router } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Route, Router, RouterModule } from '@angular/router';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
@@ -11,6 +12,8 @@ import { Validation } from 'src/utils/Validations/Validation';
   selector: 'app-login-user',
   templateUrl: './login-user.component.html',
   styleUrls: ['./login-user.component.css'],
+  standalone:true,
+  imports:[CommonModule,ReactiveFormsModule,FormsModule,RouterModule],
   encapsulation:ViewEncapsulation.None
 })
 export class LoginUserComponent implements OnInit{

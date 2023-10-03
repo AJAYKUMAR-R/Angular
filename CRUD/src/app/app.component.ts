@@ -2,7 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges,
 import { ModelService } from 'src/Service/api-service/model.service';
 import {Student} from 'src/Model/Student';
 import { FormControl, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { TableComponent } from './table/table.component';
+import { TableComponent } from './admin/table/table.component';
 import { InteractionService } from './interaction.service';
 import { LoginService } from 'src/Service/credential/login.service';
 import { Validation } from 'src/utils/Validations/Validation';

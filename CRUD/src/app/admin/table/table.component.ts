@@ -1,22 +1,26 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Student } from 'src/Model/Student';
 import { ModelService } from 'src/Service/api-service/model.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog-component/dialog-component.component';
-import { Router } from '@angular/router';
-import {MatSort, Sort} from '@angular/material/sort';
+import { Router, RouterModule } from '@angular/router';
+import {MatSort, MatSortModule, Sort} from '@angular/material/sort';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { PaginationService } from 'src/Service/api-service-pagination/pagination.service';
 import { SearchParameters } from 'src/Model/SearchParameters';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
+  standalone: true,
+  imports: [MatSortModule,MatTableModule, MatPaginatorModule,FormsModule,RouterModule ]
   //providers:[ModelService]
 })
 

@@ -1,7 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
@@ -10,7 +11,9 @@ import { Validation } from 'src/utils/Validations/Validation';
 @Component({
   selector: 'app-register-user',
   templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  styleUrls: ['./register-user.component.css'],
+  standalone:true,
+  imports:[ReactiveFormsModule,FormsModule,CommonModule,RouterModule]
 })
 export class RegisterUserComponent {
 
