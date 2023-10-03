@@ -63,9 +63,9 @@
           <div class="form-group col-md-6">
             <label for="inputState" class="m-2">Role</label>
             <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>Student</option>
-              <option>Admin</option>
+              <option selected value="">Choose...</option>
+              <option [value]="'Student'">Student</option>
+              <option [value]="'Admin'">Admin</option>
             </select>
           </div>
         </div>
@@ -80,7 +80,7 @@
           </div>
         <button type="submit" class="btn btn-primary mt-2" (click)="SignUp()">Sign in</button>
       </form>
-      <div class="card text-white bg-danger mb-3" style="min-width: 35rem;height:350px;" *ngIf="errorArray.length > 0">
+      <div class="card text-white bg-danger mb-3" style="min-width: 25rem;height:350px;" *ngIf="errorArray.length > 0">
         <div class="card-header">Summary of the Form</div>
         <div class="card-body">
           <h5 class="card-title">Error form can't be submitted</h5>

@@ -38,7 +38,7 @@ export class RegisterUserComponent {
       confirmPassword:new FormControl('',[Validators.required,Validators.pattern(this.passwordRegx)]),
       pincode:new FormControl('',[Validators.required]),
       country:new FormControl('',[Validators.required]),
-      role:new FormControl('Admin',[Validators.required])
+      role:new FormControl('',[Validators.required])
     })
   }
 
@@ -91,31 +91,14 @@ export class RegisterUserComponent {
         next:(res:ResponsesData)=>{
           if(res.data === true){
             this.registerForm.reset();
+          }else{
+            res.data.forEach((element:string) => {
+              this.errorArray.push(element);
+            });
           }
         },
         error:(response:HttpErrorResponse)=>{
-          let ValidationError = response.error.errors;
-          ValidationError["StudentName"]?.forEach((item:string)=>{
-            this.errorArray.push(item);
-          }) 
-          ValidationError["Email"]?.forEach((item:string)=>{
-            this.errorArray.push(item);
-          }) 
-          ValidationError["Password"]?.forEach((item:string)=>{
-            this.errorArray.push(item);
-          }) 
-          ValidationError["ConfirmPassword"]?.forEach((item:string)=>{
-            this.errorArray.push(item);
-          }) 
-          ValidationError["Pincode"].forEach((item:string)=>{
-            this.errorArray.push(item);
-          }) 
-          ValidationError["Country"]?.forEach((item:string)=>{
-            this.errorArray.push(item);
-          }) 
-          ValidationError["Roles"]?.forEach((item:string)=>{
-            this.errorArray.push(item);
-          }) 
+          console.log(response);
         }
       })
     }
