@@ -29,19 +29,20 @@ export class LoginUserComponent implements OnInit{
   }
 
   response:string = "";
+  errorArray:string[] = [];
   
   LoginForm!:FormGroup ;
 
   ngOnInit(): void {
     this.LoginForm = new FormGroup({
-      userName:new FormControl('',[Validators.required,Validators.minLength(4),Validators.maxLength(6)]),
+      userEmail:new FormControl('',[Validators.required,Validators.email]),
       userPassword:new FormControl('',[Validators.required])
     })
   }
 
 
-  get userName(){
-    return this.LoginForm?.get('userName');
+  get userEmail(){
+    return this.LoginForm?.get('userEmail');
   }
 
   get userPassword(){
@@ -50,19 +51,29 @@ export class LoginUserComponent implements OnInit{
 
 
   SignIn(){
+    this.errorArray.splice(0,this.errorArray.length);
     if(this.LoginForm.valid === true){
       this.cred.SignIn({
-        Username : this.userName?.value,
+        Email : this.userEmail?.value,
         Password : this.userPassword?.value
       }).subscribe({
-        next:(res:ResponsesData)=>{
-          if(res != null){
-            this.cred.storeToken(res.data);
-            //this will add the user name and Role 
-            const payload = this.cred.decodedToken();
-            this.auth.setName(payload.name);
-            this.auth.setRole(payload.role);
-            this.router.navigate(['table']);
+        next:(result:ResponsesData)=>{
+          if(result.statusMsg === "Success"){
+            if(result.data != null){
+              this.cred.storeToken(result.data.jwtTokens);
+              this.cred.storeRefreshToken(result.data.refreshTokens);
+              //this will add the user name and Role 
+              const payload = this.cred.decodedToken();
+              this.auth.setName(payload.name);
+              this.auth.setRole(payload.role);
+              this.router.navigate(['/dashboard/table']);
+            }else{
+              this.errorArray.push(result.responseMessage);
+            }
+          }else{
+            result.data.forEach((element:string) => {
+              this.errorArray.push(element);
+            });
           }
         },
         error:(err)=>{

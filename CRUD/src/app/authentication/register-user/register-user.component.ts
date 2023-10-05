@@ -89,7 +89,7 @@ export class RegisterUserComponent {
         Roles:this.userRole?.value
       }).subscribe({
         next:(res:ResponsesData)=>{
-          if(res.data === true){
+          if(res.statusMsg === "Success"){
             this.registerForm.reset();
           }else{
             res.data.forEach((element:string) => {

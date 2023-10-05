@@ -22,7 +22,7 @@
 
 .my-form {
     width: 350px;
-    height: 420px; /* Adjust the width as needed */
+    height: 500px; /* Adjust the width as needed */
     padding: 20px;
     background-color: #f7f7f7;
     border: 1px solid #ddd;
@@ -46,7 +46,9 @@
   padding: 10px 5px;
 }
 
-
+.button-align{
+  margin-top: 25px;
+}
 
   
   

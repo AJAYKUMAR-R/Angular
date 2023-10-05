@@ -32,7 +32,6 @@ export class AuthorizeService {
     this.Name$.next(name);
   }
 
- 
-
+  
 
 }

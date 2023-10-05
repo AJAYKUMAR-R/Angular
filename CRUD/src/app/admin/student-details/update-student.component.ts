@@ -18,8 +18,7 @@ import { CommonModule } from '@angular/common';
   imports:[ReactiveFormsModule,CommonModule]
 })
 export class studentDetailsComponent implements OnInit,OnDestroy{
-
-
+  
   pageHeading:string="";
 
   subscription : Subscription[] = [];

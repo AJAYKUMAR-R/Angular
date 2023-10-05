@@ -7,6 +7,7 @@ import { environmentsVariables } from 'src/environments/crud-api/environments';
 import { RegisterUser } from 'src/Model/Register';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { User } from 'src/Model/User';
+import { UserTokens } from 'src/Model/UserTokens';
 
 @Injectable({
   providedIn: 'root'
@@ -45,6 +46,18 @@ export class LoginService {
   signOut(){
     localStorage.clear();
     this.router.navigate(['login']);
+  }
+
+  renewToken(UserTokens:UserTokens):Observable<ResponsesData>{
+    return this.http.post<ResponsesData>(`${this.url}/RefreshToken`,UserTokens);
+  }
+
+  getRefreshToken(){
+    return localStorage.getItem('refreshToken')
+  }
+
+  storeRefreshToken(tokenValue: string){
+    localStorage.setItem('refreshToken', tokenValue)
   }
 
   decodedToken(){

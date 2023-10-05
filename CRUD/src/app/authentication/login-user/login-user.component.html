@@ -2,16 +2,19 @@
     <form [formGroup]="LoginForm"  class="my-form p-3">
         <h1 class="mt-2 text-center align-from-top">Login</h1>
           <div class="form-group p-1">
-            <label for="name" class="m-2">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="userName">
-            <div *ngIf="userName && userName.invalid && (userName.dirty || userName.touched)" class="text-danger">
-              <div class="mx-2" *ngIf="userName.errors?.['required']">
-                Name is required.
+            <label for="name" class="m-2">Email</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter your name" formControlName="userEmail">
+            <div *ngIf="userEmail && userEmail.invalid && (userEmail.dirty || userEmail.touched)" class="text-danger">
+              <div class="mx-2" *ngIf="userEmail.errors?.['required']">
+                Email is required.
+              </div>
+              <div class="mx-2" *ngIf="userEmail.errors?.['email']">
+                email is not valid.
               </div>
             </div>
           </div>
           <div class="form-group p-1">
-            <label for="password" class="m-2">Email</label>
+            <label for="password" class="m-2">Password</label>
             <input type="email" class="form-control" id="age" placeholder="Enter your age" formControlName="userPassword">
             <div *ngIf="userPassword && userPassword.invalid && (userPassword.dirty || userPassword.touched)" class="text-danger">
               <div class="mx-2" *ngIf="userPassword.errors?.['required']">
@@ -19,9 +22,12 @@
               </div>
             </div>
           </div>
-          <div *ngIf="response.length > 0" class="text-danger">
-            {{response}}
-        </div>
+          <div class="card-body" *ngIf="errorArray.length > 0">
+            <ul *ngFor="let i of errorArray">
+              <li class="card-text text-danger">{{i}}</li>
+            </ul>
+          </div>
+       <div class="button-align">
         <div class="container text-center pos-1">
           <input mat-raised-button class="btn btn-primary mx-3" type="button" value="SignIn" (click)="SignIn()">
            <a [routerLink]="['/register']" class="signUp">Or SignUp</a> 
@@ -31,6 +37,7 @@
           <i class="fa fa-twitter size-icon" aria-hidden="true"></i>
           <i class="fa fa-google size-icon" aria-hidden="true"></i>
         </div>
+       </div>
       </form>
 </div>
 

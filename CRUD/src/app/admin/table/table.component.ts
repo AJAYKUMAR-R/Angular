@@ -13,6 +13,7 @@ import { PaginationService } from 'src/Service/api-service-pagination/pagination
 import { SearchParameters } from 'src/Model/SearchParameters';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
   standalone: true,
-  imports: [MatSortModule,MatTableModule, MatPaginatorModule,FormsModule,RouterModule ]
+  imports: [MatSortModule,MatTableModule, MatPaginatorModule,FormsModule,RouterModule,CommonModule ]
   //providers:[ModelService]
 })
 

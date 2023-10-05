@@ -29,13 +29,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthRoutingModule } from './authentication/auth-routing.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
     //the components which is not standalone sould be imported here
     declarations: [
         AppComponent,
         ErrorComponent,
-        DialogComponent,
         
     ],
     providers: [
@@ -54,6 +54,8 @@ import { AuthRoutingModule } from './authentication/auth-routing.module';
         BrowserAnimationsModule,
         LayoutModule,
         AuthenticationModule,
+        AdminModule
+        
 
     ]
 })
