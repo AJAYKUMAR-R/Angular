@@ -27,7 +27,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: any) => {
         if (error.status === 403) {
-          // Handle unauthorized error here
+          //Handle unauthorized error here
           return this.handleUnAuthorizedError(request, next);
         }
         return throwError(() => error);
@@ -52,6 +52,7 @@ export class TokenInterceptor implements HttpInterceptor {
       }),
       catchError((err)=>{
         return throwError(()=>{
+          this.cred.signOut();
           this.router.navigate(['login'])
         })
       })

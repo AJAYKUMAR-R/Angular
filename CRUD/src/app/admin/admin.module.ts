@@ -11,7 +11,6 @@ import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
-
   ],
   imports: [
     DashBoradComponent,
@@ -20,15 +19,20 @@ import { TableComponent } from './table/table.component';
     DialogComponent,
     RouterModule.forChild([
       {
+        //admin
         path:"dashboard",
         component:DashBoradComponent,
         canActivate:[AuthGuard],
         children:[
+          //admin/student/create
           { path: "update", component: studentDetailsComponent },
+          //admin/student/update
           {path:"update/:id",component:studentDetailsComponent},
+          //studentlist
           { path: "table", component: TableComponent }
         ]
       }
+      
     ])
   ]
 })

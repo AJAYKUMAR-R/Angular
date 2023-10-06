@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { map, Observable,switchMap ,distinctUntilChanged,debounceTime} from 'rxjs';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
@@ -18,6 +19,7 @@ import { Validation } from 'src/utils/Validations/Validation';
 export class RegisterUserComponent {
 
    errorArray:string[] = []
+   ismail:boolean = false
 
   constructor(private cred:LoginService,private router:Router,private auth:AuthorizeService ) {
     
@@ -42,6 +44,21 @@ export class RegisterUserComponent {
     })
   }
 
+  Emailcheck(event:Event){
+    this.cred.EmailCheck({
+      Email:this.userEmail?.value,
+    }).pipe(
+      map((res:ResponsesData)=>{
+        if(res.statusMsg = "Success"){
+          if(res.data){
+             this.ismail = false
+          }else{
+            this.ismail =  true;
+          }
+        }
+      })
+    ).subscribe()
+  }
   
   get userName(){
     return this.registerForm?.get('name');
@@ -73,11 +90,7 @@ export class RegisterUserComponent {
 
   SignUp(){
     this.errorArray.splice(0,this.errorArray.length);
-    //if(this.registerForm.valid === true){
-      //var flag = Validation.confirmPasswordCheck(this.userPassword?.value,this.userConfirmPassword?.value);
-      //if(!flag){
-        //this.errorArray.push("Password and Confirm password is not matching");
-     // }
+    if(this.registerForm.valid === true){
       this.cred.SignUp({
         StudentId:0,
         StudentName : this.userName?.value,
@@ -91,6 +104,7 @@ export class RegisterUserComponent {
         next:(res:ResponsesData)=>{
           if(res.statusMsg === "Success"){
             this.registerForm.reset();
+            this.router.navigate(['auth']);
           }else{
             res.data.forEach((element:string) => {
               this.errorArray.push(element);
@@ -101,7 +115,10 @@ export class RegisterUserComponent {
           console.log(response);
         }
       })
+    }else{
+      this.registerForm.markAllAsTouched();
     }
+  }
   }
 
 //}

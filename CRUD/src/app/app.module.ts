@@ -30,6 +30,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthRoutingModule } from './authentication/auth-routing.module';
 import { AdminModule } from './admin/admin.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     //the components which is not standalone sould be imported here
@@ -54,7 +55,8 @@ import { AdminModule } from './admin/admin.module';
         BrowserAnimationsModule,
         LayoutModule,
         AuthenticationModule,
-        AdminModule
+        AdminModule,
+        
         
 
     ]

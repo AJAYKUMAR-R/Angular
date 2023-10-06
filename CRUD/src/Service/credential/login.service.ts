@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environmentsVariables } from 'src/environments/crud-api/environments';
+import { GetEmail } from 'src/Model/GetEmail';
 import { RegisterUser } from 'src/Model/Register';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { User } from 'src/Model/User';
@@ -28,6 +29,9 @@ export class LoginService {
 
   SignUp(register:RegisterUser):Observable<ResponsesData>{
     return this.http.post<ResponsesData>(this.url + "/SignUp",register);
+  }
+  EmailCheck(getMail:GetEmail){
+    return this.http.post<ResponsesData>(this.url + "/EmailExists",getMail);
   }
 
   storeToken(tokenValue: string){
@@ -74,11 +78,11 @@ export class LoginService {
 
   getNameofUser(){
     if(this.payload)
-    return this.payload.name
+      return this.payload.name
   }
 
   getRolefUser(){
     if(this.payload)
-    return this.payload.role;
+      return this.payload.role;
   }
 }

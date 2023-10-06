@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { PreventLoginGuard } from 'src/Gaurd/preventLogin/prevent-login.guard';
 
 // const routes: Routes = [
 //   //{path:"dashboard",component:DashBoradComponent},
@@ -15,10 +16,12 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginUserComponent,
-  }
-  , {
+    canActivate:[PreventLoginGuard]
+  },
+  {
     path: 'register',
-    component: RegisterUserComponent
+    component: RegisterUserComponent,
+    canActivate:[PreventLoginGuard]
   }
 ]
 

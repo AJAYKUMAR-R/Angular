@@ -13,7 +13,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="name" class="m-2">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your Email" formControlName="email">
+            <input type="email" (input)="Emailcheck($event)" class="form-control" id="email" placeholder="Enter your Email" formControlName="email">
             <div *ngIf="userEmail && userEmail.invalid && (userEmail.dirty || userEmail.touched)" class="text-danger">
               <div class="mx-2" *ngIf="userEmail.errors?.['required']">
                 Email is required.
@@ -22,11 +22,14 @@
                 Email Format is Incorrect.
               </div>
             </div>
+            <div class="mx-2 text-danger" *ngIf="ismail">
+              User mail is Already Exists
+            </div>
           </div>
         </div>
         <div class="form-group">
             <label for="name" class="m-2">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter your password" formControlName="password">
+            <input type="password"  class="form-control" id="password" placeholder="Enter your password" formControlName="password">
             <div *ngIf="userPassword && userPassword.invalid && (userPassword.dirty || userPassword.touched)" class="text-danger">
               <div class="mx-2" *ngIf="userPassword.errors?.['required']">
                 Password is required.
@@ -62,7 +65,7 @@
           </div>
           <div class="form-group col-md-6">
             <label for="inputState" class="m-2">Role</label>
-            <select id="inputState" class="form-control">
+            <select id="inputState"  formControlName="role" class="form-control">
               <option selected value="">Choose...</option>
               <option [value]="'Student'">Student</option>
               <option [value]="'Admin'">Admin</option>

@@ -1,6 +1,14 @@
 import { AbstractControl, ValidationErrors } from "@angular/forms";
+import { map, Observable } from "rxjs";
+import { ResponsesData } from "src/Model/ResponseData";
+import { LoginService } from "src/Service/credential/login.service";
 
 export class Validation{
+ 
+  
+  constructor() {
+   
+  }
 
     static rangeValidation(min: number, max: number) {
         return (control: AbstractControl): ValidationErrors | null => {
@@ -56,6 +64,7 @@ export class Validation{
             return false;
           }
         }
-          // No error, valid number in range
+        
+        
 };
 
