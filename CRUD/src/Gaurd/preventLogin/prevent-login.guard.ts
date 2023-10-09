@@ -15,7 +15,7 @@ export class PreventLoginGuard{
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
-      const refreshToken = this.cred.getRefreshToken()
+      const refreshToken = this.cred.getToken();
       if(refreshToken != null){
         const role = this.cred.getRolefUser();
         if(role === "Admin"){

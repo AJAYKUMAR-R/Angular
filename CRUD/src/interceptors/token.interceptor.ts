@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse
 } from '@angular/common/http';
-import { catchError, Observable ,of,switchMap,tap,throwError} from 'rxjs';
+import { catchError, map, Observable ,of,switchMap,tap,throwError} from 'rxjs';
 import { LoginService } from 'src/Service/credential/login.service';
 import { Router } from '@angular/router';
 import { ResponsesData } from 'src/Model/ResponseData';
@@ -37,26 +37,35 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   handleUnAuthorizedError(req: HttpRequest<any>, next: HttpHandler){
-    return this.cred.renewToken({
-      JwtTokens :this.cred.getToken()!,
-      RefreshTokens : this.cred.getRefreshToken()!
-    })
-    .pipe(
+    return this.cred.getRefreshTokenFromServer({
+      RefreshTokens:"",
+      JwtTokens:this.cred.getToken()!
+    }).pipe(
       switchMap((res:ResponsesData)=>{
-        this.cred.storeRefreshToken(res.data.refreshTokens);
-        this.cred.storeToken(res.data.jwtTokens);
-        req = req.clone({
-          setHeaders: {Authorization:`Bearer ${res.data.jwtTokens}`}  // "Bearer "+myToken
+        return this.cred.renewToken({
+          JwtTokens :this.cred.getToken()!,
+          RefreshTokens : res.data
         })
-        return next.handle(req);
-      }),
-      catchError((err)=>{
-        return throwError(()=>{
-          this.cred.signOut();
-          this.router.navigate(['login'])
-        })
+        .pipe(
+          switchMap((res:ResponsesData)=>{
+            this.cred.storeRefreshToken(res.data.refreshTokens);
+            this.cred.storeToken(res.data.jwtTokens);
+            req = req.clone({
+              setHeaders: {Authorization:`Bearer ${res.data.jwtTokens}`}  // "Bearer "+myToken
+            })
+            return next.handle(req);
+          }),
+          catchError((err)=>{
+            return throwError(()=>{
+              this.cred.signOut();
+              this.router.navigate(['login'])
+            })
+          })
+        )
       })
     )
+
+
   }
 
 

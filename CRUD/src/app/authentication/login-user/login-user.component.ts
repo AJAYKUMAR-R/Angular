@@ -61,7 +61,7 @@ export class LoginUserComponent implements OnInit{
           if(result.statusMsg === "Success"){
             if(result.data != null){
               this.cred.storeToken(result.data.jwtTokens);
-              this.cred.storeRefreshToken(result.data.refreshTokens);
+             // this.cred.storeRefreshToken(result.data.refreshTokens);
               //this will add the user name and Role 
               const payload = this.cred.decodedToken();
               this.auth.setName(payload.name);

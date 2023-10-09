@@ -30,6 +30,16 @@ export class LoginService {
   SignUp(register:RegisterUser):Observable<ResponsesData>{
     return this.http.post<ResponsesData>(this.url + "/SignUp",register);
   }
+
+
+  renewToken(UserTokens:UserTokens):Observable<ResponsesData>{
+    return this.http.post<ResponsesData>(`${this.url}/RefreshToken`,UserTokens);
+  }
+
+  getRefreshTokenFromServer(UserTokens:UserTokens):Observable<ResponsesData>{
+    return this.http.post<ResponsesData>(`${this.url}/GetRefresh`,UserTokens);
+  }
+
   EmailCheck(getMail:GetEmail){
     return this.http.post<ResponsesData>(this.url + "/EmailExists",getMail);
   }
@@ -52,9 +62,7 @@ export class LoginService {
     this.router.navigate(['login']);
   }
 
-  renewToken(UserTokens:UserTokens):Observable<ResponsesData>{
-    return this.http.post<ResponsesData>(`${this.url}/RefreshToken`,UserTokens);
-  }
+ 
 
   getRefreshToken(){
     return localStorage.getItem('refreshToken')
