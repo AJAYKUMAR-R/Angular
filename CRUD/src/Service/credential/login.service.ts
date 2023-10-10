@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { Roles } from 'src/enum/Role';
 import { environmentsVariables } from 'src/environments/crud-api/environments';
 import { GetEmail } from 'src/Model/GetEmail';
 import { RegisterUser } from 'src/Model/Register';
@@ -20,7 +21,7 @@ export class LoginService {
   private readonly payload:any;
 
   constructor(private http:HttpClient,private router:Router) { 
-    //this.payload = this.decodedToken();
+    this.payload = this.decodedToken();
   }
 
   SignIn(loginuser:User):Observable<ResponsesData>{
@@ -59,7 +60,7 @@ export class LoginService {
 
   signOut(){
     localStorage.clear();
-    this.router.navigate(['login']);
+    this.router.navigate(['auth']);
   }
 
  
@@ -86,11 +87,15 @@ export class LoginService {
 
   getNameofUser(){
     if(this.payload)
-      return this.payload.name
+      return this.payload.Name
   }
 
-  getRolefUser(){
-    if(this.payload)
-      return this.payload.role;
+  getRolefUser():Roles | null{
+    if(this.payload){
+      const role = this.payload.Role
+      return role === "Admin"?Roles.Admin:Roles.User
+    }else{
+      return null;
+    }
   }
 }

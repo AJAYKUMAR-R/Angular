@@ -64,9 +64,13 @@ export class LoginUserComponent implements OnInit{
              // this.cred.storeRefreshToken(result.data.refreshTokens);
               //this will add the user name and Role 
               const payload = this.cred.decodedToken();
-              this.auth.setName(payload.name);
-              this.auth.setRole(payload.role);
-              this.router.navigate(['/dashboard/table']);
+              this.auth.setName(payload.Name);
+              this.auth.setRole(payload.Role);
+              if(payload.Role != "Admin"){
+                this.router.navigate(['/home']);
+              }else{
+                this.router.navigate(['/dashboard/table']);
+              }
             }else{
               this.errorArray.push(result.responseMessage);
             }

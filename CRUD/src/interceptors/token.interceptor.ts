@@ -58,7 +58,7 @@ export class TokenInterceptor implements HttpInterceptor {
           catchError((err)=>{
             return throwError(()=>{
               this.cred.signOut();
-              this.router.navigate(['login'])
+              this.router.navigate(['auth'])
             })
           })
         )

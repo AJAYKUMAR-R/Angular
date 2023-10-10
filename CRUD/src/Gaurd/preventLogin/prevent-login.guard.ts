@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Roles } from 'src/enum/Role';
 import { LoginService } from 'src/Service/credential/login.service';
 
 @Injectable({
@@ -18,10 +19,11 @@ export class PreventLoginGuard{
       const refreshToken = this.cred.getToken();
       if(refreshToken != null){
         const role = this.cred.getRolefUser();
-        if(role === "Admin"){
-          this.router.navigate(['table'])
+        this.router.navigate(['table']);
+        if(role === Roles.Admin){
+          this.router.navigate(['/dashboard/table']);
         }else{
-          //this.router.navigate(['table'])
+          this.router.navigate(['home']);
         }
        
         return false;

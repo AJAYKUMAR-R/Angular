@@ -28,9 +28,9 @@ import { TokenInterceptor } from 'src/interceptors/token.interceptor';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthenticationModule } from './authentication/authentication.module';
-import { AuthRoutingModule } from './authentication/auth-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
+import { UserModule } from './user/user.module';
 
 @NgModule({
     //the components which is not standalone sould be imported here
@@ -56,9 +56,7 @@ import { RouterModule } from '@angular/router';
         LayoutModule,
         AuthenticationModule,
         AdminModule,
-        
-        
-
+        UserModule
     ]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/Gaurd/auth.guard';
+import { AdminGuard } from 'src/Gaurd/authorizeGuard/adminGuard/admin.guard';
 import { LoginUserComponent } from '../authentication/login-user/login-user.component';
 import { RegisterUserComponent } from '../authentication/register-user/register-user.component';
 import { DashBoradComponent } from './dash-borad/dash-borad.component';
@@ -22,7 +23,7 @@ import { TableComponent } from './table/table.component';
         //admin
         path:"dashboard",
         component:DashBoradComponent,
-        canActivate:[AuthGuard],
+        canActivate:[AuthGuard,AdminGuard],
         children:[
           //admin/student/create
           { path: "update", component: studentDetailsComponent },

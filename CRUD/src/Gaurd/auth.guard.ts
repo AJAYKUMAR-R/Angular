@@ -15,7 +15,7 @@ export class AuthGuard{
     if(this.cred.getToken()){
       return true;
     }else{
-      this.route.navigate(["login"]);
+      this.route.navigate(["auth"]);
       return false;
     }
   }
