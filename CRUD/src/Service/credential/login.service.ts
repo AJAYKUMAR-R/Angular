@@ -94,6 +94,11 @@ export class LoginService {
       return this.payload.Name
   }
 
+  getEmailofUser(){
+    if(this.payload)
+      return this.payload.Email
+  }
+
   getRolefUser():Roles | null{
     if(this.payload){
       const role = this.payload.Role;

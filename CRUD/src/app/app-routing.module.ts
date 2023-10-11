@@ -22,13 +22,6 @@ const route: Routes = [
     canActivate: [PreventLoginGuard]
 
   },
-  {
-    path: 'home',
-    component: HomeComponent,
-    canActivate:[AuthGuard,UserGuard]
-  
-
-  },
   //{path:"register",component:RegisterUserComponent},
   //{path:"table",component:TableComponent,canActivate:[AuthGuard]},
   //{path:"update/:id",component:studentDetailsComponent},
