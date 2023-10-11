@@ -1,13 +1,13 @@
-<mat-sidenav-container  class="sidenav-container">
+<mat-sidenav-container   class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Features</mat-toolbar>
     <mat-nav-list class="mat-color">
-      <a mat-list-item [routerLink]="'update'" style="color: #3b3b3b;">Create Students</a>
-      <a mat-list-item [routerLink]="'table'" style="color: #3b3b3b;">List of Students</a>
-      <a mat-list-item (click)="SignOut()" style="color: #3b3b3b;">SignOut</a>
+      <a mat-list-item [routerLink]="'update'" >Create Students</a>
+      <a mat-list-item [routerLink]="'table'">List of Students</a>
+      <a mat-list-item (click)="SignOut()">SignOut</a>
       <!-- <a mat-list-item [routerLink]="'table'">DELETE</a> -->
     </mat-nav-list>
   </mat-sidenav>

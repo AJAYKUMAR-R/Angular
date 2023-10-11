@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Student } from 'src/Model/Student';
 import { ModelService } from 'src/Service/api-service/model.service';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MatSortModule,MatTableModule, MatPaginatorModule,FormsModule,RouterModule,CommonModule ]
   //providers:[ModelService]
+
 })
 
 export class TableComponent  implements OnInit,OnDestroy{
