@@ -3,12 +3,15 @@ import { BehaviorSubject } from 'rxjs';
 import {JwtHelperService} from "@auth0/angular-jwt"
 import { LoginService } from '../credential/login.service';
 import { Roles } from 'src/enum/Role';
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthorizeService {
 
-  role$ = new BehaviorSubject<Roles>(Roles.User);
+  role$ = new BehaviorSubject<Roles>(Roles.None);
   Name$ = new BehaviorSubject<string>("");
   
 
@@ -25,8 +28,8 @@ export class AuthorizeService {
     return this.role$.asObservable();
   }
 
-  setRole(role:string){
-    this.role$.next(role === "Admin"?Roles.Admin:Roles.User);
+  setRole(role:Roles){
+    this.role$.next(role);
   }
 
   setName(name:string){

@@ -9,7 +9,7 @@ import { LoginService } from 'src/Service/credential/login.service';
   providedIn: 'root'
 })
 export class AdminGuard {
-  constructor(private cred:LoginService,private router:Router){
+  constructor(private cred:LoginService,private router:Router,private auth:AuthorizeService){
 
   }
   canActivate(

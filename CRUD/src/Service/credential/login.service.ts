@@ -18,7 +18,7 @@ export class LoginService {
 
   url:string = environmentsVariables.Auth;
 
-  private readonly payload:any;
+  private payload:any;
 
   constructor(private http:HttpClient,private router:Router) { 
     this.payload = this.decodedToken();
@@ -63,7 +63,11 @@ export class LoginService {
     this.router.navigate(['auth']);
   }
 
- 
+  public set payloads(pay:any){
+    this.payload = pay;
+  }
+
+
 
   getRefreshToken(){
     return localStorage.getItem('refreshToken')
@@ -92,8 +96,8 @@ export class LoginService {
 
   getRolefUser():Roles | null{
     if(this.payload){
-      const role = this.payload.Role
-      return role === "Admin"?Roles.Admin:Roles.User
+      const role = this.payload.Role;
+      return role === "Admin"?Roles.Admin:Roles.User;
     }else{
       return null;
     }

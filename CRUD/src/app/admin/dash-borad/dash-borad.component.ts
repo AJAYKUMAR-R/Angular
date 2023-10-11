@@ -40,8 +40,7 @@ export class DashBoradComponent implements OnInit{
 
   getDetails(){
     this.auth.getName().subscribe((res)=>{
-      const nameFromToken = this.cred.getNameofUser();
-      this.name = res || nameFromToken;
+      this.name = res;
     }) 
   }
   

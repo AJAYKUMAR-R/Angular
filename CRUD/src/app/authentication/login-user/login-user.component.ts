@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Route, Router, RouterModule } from '@angular/router';
+import { Roles } from 'src/enum/Role';
 import { ResponsesData } from 'src/Model/ResponseData';
 import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
@@ -30,6 +31,7 @@ export class LoginUserComponent implements OnInit{
 
   response:string = "";
   errorArray:string[] = [];
+
   
   LoginForm!:FormGroup ;
 
@@ -64,11 +66,15 @@ export class LoginUserComponent implements OnInit{
              // this.cred.storeRefreshToken(result.data.refreshTokens);
               //this will add the user name and Role 
               const payload = this.cred.decodedToken();
+              this.cred.payloads = payload;
+              
               this.auth.setName(payload.Name);
-              this.auth.setRole(payload.Role);
+              
               if(payload.Role != "Admin"){
+                this.auth.setRole(Roles.User);
                 this.router.navigate(['/home']);
               }else{
+                this.auth.setRole(Roles.Admin);
                 this.router.navigate(['/dashboard/table']);
               }
             }else{

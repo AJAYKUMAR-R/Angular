@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Roles } from 'src/enum/Role';
+import { AuthorizeService } from 'src/Service/auth/authorize.service';
 import { LoginService } from 'src/Service/credential/login.service';
 
 @Injectable({
@@ -11,7 +12,7 @@ export class PreventLoginGuard{
   /**
    *
    */
-  constructor(private cred:LoginService,private router:Router) {
+  constructor(private cred:LoginService,private router:Router,private auth:AuthorizeService) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
