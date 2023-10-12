@@ -11,12 +11,11 @@ import { UserGuard } from 'src/Gaurd/authorizeGuard/userGuard/user.guard';
 @NgModule({
   declarations: [
     
-  
-    FeeComponent
   ],
   imports: [
     CommonModule,
     HomeComponent,
+    FeeComponent,
     RouterModule.forChild([
       {
         //admin
@@ -25,10 +24,9 @@ import { UserGuard } from 'src/Gaurd/authorizeGuard/userGuard/user.guard';
         canActivate:[AuthGuard,UserGuard],
         children:[
           //admin/student/create
-          { path: "Fee", component: FeeComponent },
+          {path:"fee",component:FeeComponent},
         ]
       }
-      
     ])
   ]
 })

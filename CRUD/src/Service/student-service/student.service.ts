@@ -17,4 +17,9 @@ export class StudentService {
     return this.http.get<ResponsesData>(`${this.url}/${email}`);
   }
 
+  GetProfile(email:string):Observable<ResponsesData>{
+    return this.http.get<ResponsesData>(`${this.url}/GetProfile/${email}`);
+  }
+
+
 }

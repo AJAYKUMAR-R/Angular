@@ -1,0 +1,45 @@
+.user-profile{
+    height:250px;
+    width:250px;
+    border-radius:3mm;
+    background-image: url("https://i.pinimg.com/564x/05/5a/91/055a91979264664a1ee12b9453610d82.jpg");
+    background-size: cover;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2.5rem;
+}
+
+.user-details table td{
+    padding: 0.2rem;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.user-details table label{
+    padding: 0.3rem 0.3rem;
+}
+
+.fee-details{
+    width: 850px;
+    padding: 3.78rem 0rem 0.8rem 0rem;
+    margin:0 auto;
+   
+}
+
+.fee-details table{
+    border: 2px solid grey;
+}
+
+.info-fee{
+    width: 450px;
+    margin:0 auto;
+    text-align: center;
+}
+
+.pay-button{
+    padding-bottom: 2.5rem;
+}

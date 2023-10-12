@@ -13,9 +13,8 @@ import { LoginService } from 'src/Service/credential/login.service';
   imports: [MatToolbarModule, MatButtonModule, MatIconModule,RouterModule],
 })
 export class HomeComponent {
-  /**
-   *
-   */
+
+  
   constructor(private cred:LoginService) {
 
   }

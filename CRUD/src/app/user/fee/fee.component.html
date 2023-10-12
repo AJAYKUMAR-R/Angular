@@ -1,19 +1,95 @@
-<div *ngIf="student != null">
-    <table>
-        <tr>
-            <th>ExamFee</th>
-            <th>TutionFee</th>
-            <th>BusFee</th>
-            <th>TotalFee</th>
-            <th>Paid Status</th>
-        </tr>
-        <tr>
-            <td>{{student.ExamFee}}</td>
-            <td>{{student.TutionFee}}</td>
-            <td>{{student.BusFee}}</td>
-            <td>{{student.TotalFee}}</td>
-            <td>{{student.TotalFee}}</td>
-        </tr>
-    </table>
-    
+<div class="wrapper">
+    <div class="user-profile">
+    </div>  
+    <div class="user-details" *ngIf="profile != null">
+        <table>
+            <tr>
+                <td>
+                    <label>Name : </label>
+                    <label>{{profile.studentName}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Email : </label>
+                    <label>{{profile.email}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Pincode : </label>
+                    <label>{{profile.pincode}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Country : </label>
+                    <label>{{profile.country}}</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Role : </label>
+                    <label>{{profile.roles}}</label>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>
+
+<div  *ngIf="student != null">
+    <mat-card *ngIf="!student.isPaid" class="bg-warning info-fee">
+        <mat-card-content>Oops Fee not yet Paid!</mat-card-content>
+    </mat-card>
+</div>
+
+<div  *ngIf="student != null">
+    <mat-card *ngIf="student.isPaid" class="bg-success info-fee">
+        <mat-card-content>Fee paid successfully</mat-card-content>
+    </mat-card>
+</div>
+
+
+<div class="fee-details" *ngIf="student != null">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fees Type</th>
+                <th>Fee Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Exam Fee</th>
+                <td>{{student.busFee}}</td>
+            </tr>
+            <tr>
+                <th>Exam Fee</th>
+                <td>{{student.examFee}}</td>
+            </tr>
+            <tr>
+                <th>Tution Fee</th>
+                <td>{{student.tutionFee}}</td>
+            </tr>
+            <tr>
+                <th>TotalFee</th>
+                <td [className]="student.isPaid?'text-success':'text-danger'">{{student.totalFee}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<!-- <td>{{student.tutionFee}}</td>
+<td>{{student.busFee}}</td>
+<td>{{student.totalFee}}</td>
+<td>{{student.isPaid}}</td> -->
+<div class="pay-button text-center" *ngIf="student != null && !student.isPaid">
+    <button class="btn btn-outline-primary">Pay Now</button>
+</div>
+
+
+
+
+
+
+
+

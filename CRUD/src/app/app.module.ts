@@ -37,7 +37,6 @@ import { UserModule } from './user/user.module';
     declarations: [
         AppComponent,
         ErrorComponent,
-        
     ],
     providers: [
         {
