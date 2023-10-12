@@ -12,6 +12,14 @@ import { AuthGuard } from 'src/Gaurd/auth.guard';
 const route: Routes = [
   //{path:"dashboard",component:DashBoradComponent},
   // {path:"update",component:studentDetailsComponent},
+  {
+    path: 'dashboard',
+    loadChildren: () => import('src/app/admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('src/app/user/user.module').then((m) => m.UserModule),
+  },
   { path: "auth", 
   component: LoginUserComponent, 
   canActivate: [PreventLoginGuard] 
@@ -26,7 +34,7 @@ const route: Routes = [
   //{path:"table",component:TableComponent,canActivate:[AuthGuard]},
   //{path:"update/:id",component:studentDetailsComponent},
   { path: "", redirectTo: '/auth', pathMatch: "full" },
-  //{path:"**",component:ErrorComponent}
+  {path:"**",component:ErrorComponent}
 
 ];
 

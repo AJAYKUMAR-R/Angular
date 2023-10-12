@@ -54,8 +54,7 @@ import { UserModule } from './user/user.module';
         BrowserAnimationsModule,
         LayoutModule,
         AuthenticationModule,
-        AdminModule,
-        UserModule
+       
     ]
 })
 export class AppModule { }

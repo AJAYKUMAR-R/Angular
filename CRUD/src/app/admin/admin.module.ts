@@ -4,6 +4,7 @@ import { AuthGuard } from 'src/Gaurd/auth.guard';
 import { AdminGuard } from 'src/Gaurd/authorizeGuard/adminGuard/admin.guard';
 import { LoginUserComponent } from '../authentication/login-user/login-user.component';
 import { RegisterUserComponent } from '../authentication/register-user/register-user.component';
+import { ErrorComponent } from '../error/error.component';
 import { DashBoradComponent } from './dash-borad/dash-borad.component';
 import { DialogComponent } from './dialog-component/dialog-component.component';
 import { studentDetailsComponent } from './student-details/update-student.component';
@@ -21,7 +22,7 @@ import { TableComponent } from './table/table.component';
     RouterModule.forChild([
       {
         //admin
-        path:"dashboard",
+        path:"",
         component:DashBoradComponent,
         canActivate:[AuthGuard,AdminGuard],
         children:[
@@ -30,9 +31,13 @@ import { TableComponent } from './table/table.component';
           //admin/student/update
           {path:"update/:id",component:studentDetailsComponent},
           //studentlist
-          { path: "table", component: TableComponent }
+          { path: "table", component: TableComponent },
+          
         ]
-      }
+      },
+      {path:"**",component:DashBoradComponent}
+      //{ path: "", redirectTo: '/dashboard', pathMatch: "full" },
+      //{path:"**",component:DashBoradComponent}
       
     ])
   ]

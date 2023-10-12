@@ -5,6 +5,7 @@ import { FeeComponent } from './fee/fee.component';
 import { RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/Gaurd/auth.guard';
 import { UserGuard } from 'src/Gaurd/authorizeGuard/userGuard/user.guard';
+import { ErrorComponent } from '../error/error.component';
 
 
 
@@ -19,14 +20,19 @@ import { UserGuard } from 'src/Gaurd/authorizeGuard/userGuard/user.guard';
     RouterModule.forChild([
       {
         //admin
-        path:"home",
+        path:"",
         component:HomeComponent,
         canActivate:[AuthGuard,UserGuard],
         children:[
           //admin/student/create
           {path:"fee",component:FeeComponent},
+          
         ]
-      }
+      },
+      {path:"**",component:HomeComponent}
+      // { path: "", redirectTo: '/home', pathMatch: "full" },
+      
+      
     ])
   ]
 })
