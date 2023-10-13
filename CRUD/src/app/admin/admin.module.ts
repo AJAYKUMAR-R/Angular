@@ -32,7 +32,7 @@ import { TableComponent } from './table/table.component';
           {path:"update/:id",component:studentDetailsComponent},
           //studentlist
           { path: "table", component: TableComponent },
-          
+          //{path:"**",component:DashBoradComponent}
         ]
       },
       {path:"**",component:DashBoradComponent}

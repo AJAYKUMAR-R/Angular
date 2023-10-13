@@ -1,0 +1,19 @@
+.page-not-found {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://img.freepik.com/free-vector/error-404-concept-illustration_114360-1811.jpg?w=740&t=st=1697209501~exp=1697210101~hmac=fd135ee74d1e6a75e18e99b99a3408a9295737d4faa51ceaa2b2b7d7510d64a7");
+    /* background-size: cover; */
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 auto;
+   
+  }
+.wrapper{
+
+    margin-top: 300px;
+    margin-left: 1100px;
+   
+}

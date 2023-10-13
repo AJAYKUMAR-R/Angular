@@ -36,7 +36,7 @@ import { UserModule } from './user/user.module';
     //the components which is not standalone sould be imported here
     declarations: [
         AppComponent,
-        ErrorComponent,
+       
     ],
     providers: [
         {
@@ -51,6 +51,7 @@ import { UserModule } from './user/user.module';
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        ErrorComponent,
         BrowserAnimationsModule,
         LayoutModule,
         AuthenticationModule,

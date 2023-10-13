@@ -7,8 +7,6 @@ import { AuthGuard } from 'src/Gaurd/auth.guard';
 import { UserGuard } from 'src/Gaurd/authorizeGuard/userGuard/user.guard';
 import { ErrorComponent } from '../error/error.component';
 
-
-
 @NgModule({
   declarations: [
     
@@ -25,14 +23,12 @@ import { ErrorComponent } from '../error/error.component';
         canActivate:[AuthGuard,UserGuard],
         children:[
           //admin/student/create
-          {path:"fee",component:FeeComponent},
-          
+          {path:"fee",component:FeeComponent}
+          //{path:"**",component:HomeComponent}
         ]
       },
       {path:"**",component:HomeComponent}
       // { path: "", redirectTo: '/home', pathMatch: "full" },
-      
-      
     ])
   ]
 })

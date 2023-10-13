@@ -1,10 +1,15 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { RouterModule } from '@angular/router';
 import { InteractionService } from '../interaction.service';
 
 @Component({
   selector: 'app-error',
   templateUrl: './error.component.html',
-  styleUrls: ['./error.component.css']
+  styleUrls: ['./error.component.css'],
+  standalone:true,
+  imports: [MatGridListModule,MatButtonModule,RouterModule]
 })
 export class ErrorComponent implements OnChanges,OnInit{
   /**
