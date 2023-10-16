@@ -27,7 +27,7 @@ import { ErrorComponent } from '../error/error.component';
           //{path:"**",component:HomeComponent}
         ]
       },
-      {path:"**",component:HomeComponent}
+      //{path:"**",component:HomeComponent}
       // { path: "", redirectTo: '/home', pathMatch: "full" },
     ])
   ]

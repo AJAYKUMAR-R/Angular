@@ -34,7 +34,7 @@ const route: Routes = [
   //{path:"table",component:TableComponent,canActivate:[AuthGuard]},
   //{path:"update/:id",component:studentDetailsComponent},
   { path: "", redirectTo: '/auth', pathMatch: "full" },
-  {path:"**",component:ErrorComponent}
+  {path:"notfound",component:ErrorComponent}
 
 ];
 

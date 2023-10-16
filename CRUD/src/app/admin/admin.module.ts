@@ -35,7 +35,7 @@ import { TableComponent } from './table/table.component';
           //{path:"**",component:DashBoradComponent}
         ]
       },
-      {path:"**",component:DashBoradComponent}
+      //{path:"**",component:DashBoradComponent}
       //{ path: "", redirectTo: '/dashboard', pathMatch: "full" },
       //{path:"**",component:DashBoradComponent}
       

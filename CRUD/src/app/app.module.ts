@@ -1,5 +1,5 @@
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +31,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { AdminModule } from './admin/admin.module';
 import { RouterModule } from '@angular/router';
 import { UserModule } from './user/user.module';
+import { GlobalErrorHandler } from 'src/utils/ErrorHandling/ErrorHandler';
 
 @NgModule({
     //the components which is not standalone sould be imported here
@@ -43,8 +44,11 @@ import { UserModule } from './user/user.module';
             provide: HTTP_INTERCEPTORS,
             useClass: TokenInterceptor,
             multi: true
-        }
+        },
+        //404 not needed
+    {provide: ErrorHandler, useClass: GlobalErrorHandler }
     ],
+    
     bootstrap: [AppComponent],
     //Stand alone cmponents should be used from the Imports
     imports: [
