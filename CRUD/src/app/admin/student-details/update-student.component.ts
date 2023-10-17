@@ -111,7 +111,7 @@ export class studentDetailsComponent implements OnInit,OnDestroy{
         grade:this.Grade?.value
       },this.studentId).subscribe({
         next:(response)=>{  
-          window.location.href = "http://localhost:4200/table";
+          window.location.href = "http://localhost:4200/admin/grid";
           this.CreateForm.reset();
         },
         error:(error)=>{
@@ -138,7 +138,7 @@ export class studentDetailsComponent implements OnInit,OnDestroy{
         grade:this.Grade?.value
       }).subscribe({
         next:(response)=>{
-          window.location.href = "http://localhost:4200/table";
+          window.location.href = "http://localhost:4200/admin/grid";
          //Reseting the Form
          this.CreateForm.reset()
         },

@@ -23,7 +23,6 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [MatSortModule,MatTableModule, MatPaginatorModule,FormsModule,RouterModule,CommonModule ]
   //providers:[ModelService]
-
 })
 
 export class TableComponent  implements OnInit,OnDestroy{
@@ -55,7 +54,6 @@ export class TableComponent  implements OnInit,OnDestroy{
   this.param.Page = this.currentPage;
   console.log(this.param);
   this.getRecordPerPage(this.param);
-
  }
 
   //for pagination 
@@ -64,8 +62,6 @@ export class TableComponent  implements OnInit,OnDestroy{
     this.param.SortColumn = sortState.active.toString();
     console.log(this.param);
     this.getRecordPerPage(this.param);
-
-
   }
 
 
@@ -104,18 +100,6 @@ export class TableComponent  implements OnInit,OnDestroy{
         if(response.data != null){
           console.log( response.data.result);
           this.dataSource.data = response.data.result
-          
-          // .map((element:Student,index:number)=>{
-          //   let count = (this.pageSize * (this.currentPage)) + (index + 1);
-          //   return {
-          //     SNo:count,
-          //     studentId :element.studentId,
-          //     name:element.studentName,
-          //     age:element.age,
-          //     grade:element.grade
-          //   }
-          // });
-
           this.totalItems = response.data.totalCount;
           console.log(response.data.totalCount);
         }else{
@@ -138,7 +122,7 @@ export class TableComponent  implements OnInit,OnDestroy{
       const deleteStudents = this.list.deleteStudent(id).subscribe({
         next:(response)=>{
           //this.router.navigate(['table']);
-          window.location.href = "http://localhost:4200/table";
+          window.location.href = "http://localhost:4200/admin/grid";
         },
         error:(error)=>{
           alert("Internal Server Error")
