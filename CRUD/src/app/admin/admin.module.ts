@@ -9,6 +9,7 @@ import { DashBoradComponent } from './dash-borad/dash-borad.component';
 import { DialogComponent } from './dialog-component/dialog-component.component';
 import { studentDetailsComponent } from './student-details/update-student.component';
 import { TableComponent } from './table/table.component';
+import { EditStudentComponent } from './edit-student/edit-student.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { TableComponent } from './table/table.component';
     TableComponent,
     studentDetailsComponent,
     DialogComponent,
+    EditStudentComponent,
     RouterModule.forChild([
       {
         //admin
@@ -31,11 +33,12 @@ import { TableComponent } from './table/table.component';
           //admin/student/update
           {path:"update/:id",component:studentDetailsComponent},
           //studentlist
-          { path: "table", component: TableComponent },
+          { path: "grid", component: TableComponent },
+          { path: "edit", component: EditStudentComponent },
           //{path:"**",component:DashBoradComponent}
         ]
       },
-      //{path:"**",component:DashBoradComponent}
+      {path:"**",component:ErrorComponent}
       //{ path: "", redirectTo: '/dashboard', pathMatch: "full" },
       //{path:"**",component:DashBoradComponent}
       
