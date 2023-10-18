@@ -13,11 +13,11 @@ const route: Routes = [
   //{path:"dashboard",component:DashBoradComponent},
   // {path:"update",component:studentDetailsComponent},
   {
-    path: 'dashboard',
+    path: 'admin',
     loadChildren: () => import('src/app/admin/admin.module').then((m) => m.AdminModule),
   },
   {
-    path: 'home',
+    path: 'student',
     loadChildren: () => import('src/app/user/user.module').then((m) => m.UserModule),
   },
   { path: "auth", 
@@ -34,7 +34,7 @@ const route: Routes = [
   //{path:"table",component:TableComponent,canActivate:[AuthGuard]},
   //{path:"update/:id",component:studentDetailsComponent},
   { path: "", redirectTo: '/auth', pathMatch: "full" },
-  {path:"notfound",component:ErrorComponent}
+  {path:"**",component:ErrorComponent}
 
 ];
 

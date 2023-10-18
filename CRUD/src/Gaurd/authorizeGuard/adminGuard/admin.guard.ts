@@ -19,7 +19,7 @@ export class AdminGuard {
       if(role === Roles.Admin){
         return true;
       }else{
-        this.router.navigate(['home']);
+        this.router.navigate(['student']);
         return false;
       }
       

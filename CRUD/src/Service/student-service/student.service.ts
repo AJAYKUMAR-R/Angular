@@ -21,5 +21,8 @@ export class StudentService {
     return this.http.get<ResponsesData>(`${this.url}/GetProfile/${email}`);
   }
 
+  GetPDF(){
+    return this.http.get(`${this.url}/GetPdf`, { responseType: 'blob' })
+  }
 
 }

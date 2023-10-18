@@ -26,7 +26,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       catchError((error: any) => {
-        if (error.status === 403) {
+        if (error.status === 401) {
           //Handle unauthorized error here
           return this.handleUnAuthorizedError(request, next);
         }
@@ -37,11 +37,13 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   handleUnAuthorizedError(req: HttpRequest<any>, next: HttpHandler){
+    //Request one
     return this.cred.getRefreshTokenFromServer({
       RefreshTokens:"",
       JwtTokens:this.cred.getToken()!
     }).pipe(
       switchMap((res:ResponsesData)=>{
+        //Request two
         return this.cred.renewToken({
           JwtTokens :this.cred.getToken()!,
           RefreshTokens : res.data

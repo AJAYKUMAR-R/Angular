@@ -1,5 +1,5 @@
 export enum Roles{
     Admin,
-    User,
+    Student,
     None
 }

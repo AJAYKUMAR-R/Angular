@@ -71,11 +71,11 @@ export class LoginUserComponent implements OnInit{
               this.auth.setName(payload.Name);
               
               if(payload.Role != "Admin"){
-                this.auth.setRole(Roles.User);
-                this.router.navigate(['/home']);
+                this.auth.setRole(Roles.Student);
+                this.router.navigate(['/student']);
               }else{
                 this.auth.setRole(Roles.Admin);
-                this.router.navigate(['/dashboard/table']);
+                this.router.navigate(['/admin/grid']);
               }
             }else{
               this.errorArray.push(result.responseMessage);
@@ -90,6 +90,8 @@ export class LoginUserComponent implements OnInit{
           console.log(err);
         }
       })
+    }else{
+      this.LoginForm.markAllAsTouched();
     }
   }
 

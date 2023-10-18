@@ -102,7 +102,7 @@ export class LoginService {
   getRolefUser():Roles | null{
     if(this.payload){
       const role = this.payload.Role;
-      return role === "Admin"?Roles.Admin:Roles.User;
+      return role === "Admin"?Roles.Admin:Roles.Student;
     }else{
       return null;
     }

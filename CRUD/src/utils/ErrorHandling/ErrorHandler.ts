@@ -24,8 +24,10 @@ export class GlobalErrorHandler implements ErrorHandler {
         }
       } else {
         // Handle errors with undefined status or other unexpected cases
-        this.router.navigate(['notfound'])
+        //this.router.navigate(['notfound'])
         // Handle these errors as needed.
+        console.log(error);
+        
       }
   
   }

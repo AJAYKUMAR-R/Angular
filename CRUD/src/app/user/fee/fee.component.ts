@@ -56,5 +56,15 @@ export class FeeComponent implements OnInit {
     
   }
 
+  getPDF(){
+    const email = this.auth.getEmailofUser();
+    this.fee.GetPDF().subscribe((response: Blob) => {
+      const url = window.URL.createObjectURL(response);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'my_document.pdf';
+      a.click();
+    });
+  }
   
 }

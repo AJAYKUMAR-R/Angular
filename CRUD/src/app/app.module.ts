@@ -46,7 +46,7 @@ import { GlobalErrorHandler } from 'src/utils/ErrorHandling/ErrorHandler';
             multi: true
         },
         //404 not needed
-    {provide: ErrorHandler, useClass: GlobalErrorHandler }
+        //{provide: ErrorHandler, useClass: GlobalErrorHandler }
     ],
     
     bootstrap: [AppComponent],

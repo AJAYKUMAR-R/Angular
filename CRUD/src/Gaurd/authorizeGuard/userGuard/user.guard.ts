@@ -13,17 +13,16 @@ export class UserGuard {
   constructor(private auth:AuthorizeService,private router:Router,private cred:LoginService){
 
   }
-
+  
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean{
       const role = this.cred.getRolefUser();
       if(role === Roles.Admin){                
-        this.router.navigate(['/dashboard/table']);
+        this.router.navigate(['/admin/grid']);
         return false;
       }else{
         return true;
       }
   }
-  
 }

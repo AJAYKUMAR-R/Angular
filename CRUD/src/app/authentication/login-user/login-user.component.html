@@ -15,7 +15,7 @@
           </div>
           <div class="form-group p-1">
             <label for="password" class="m-2">Password</label>
-            <input type="email" class="form-control" id="age" placeholder="Enter your age" formControlName="userPassword">
+            <input type="password" class="form-control" id="age" placeholder="Enter your age" formControlName="userPassword">
             <div *ngIf="userPassword && userPassword.invalid && (userPassword.dirty || userPassword.touched)" class="text-danger">
               <div class="mx-2" *ngIf="userPassword.errors?.['required']">
                 Password is required.

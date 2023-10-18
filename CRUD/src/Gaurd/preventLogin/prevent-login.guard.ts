@@ -20,11 +20,11 @@ export class PreventLoginGuard{
       const refreshToken = this.cred.getToken();
       if(refreshToken != null){
         const role = this.cred.getRolefUser();
-        this.router.navigate(['table']);
+        this.router.navigate(['grid']);
         if(role === Roles.Admin){
-          this.router.navigate(['/dashboard/table']);
+          this.router.navigate(['/admin/grid']);
         }else{
-          this.router.navigate(['home']);
+          this.router.navigate(['student']);
         }
        
         return false;

@@ -60,7 +60,7 @@
         </thead>
         <tbody>
             <tr>
-                <th>Exam Fee</th>
+                <th>Bus Fee</th>
                 <td>{{student.busFee}}</td>
             </tr>
             <tr>
@@ -83,7 +83,7 @@
 <td>{{student.totalFee}}</td>
 <td>{{student.isPaid}}</td> -->
 <div class="pay-button text-center" *ngIf="student != null && !student.isPaid">
-    <button class="btn btn-outline-primary">Pay Now</button>
+    <button class="btn btn-outline-primary" (click)="getPDF()">Pay Now</button>
 </div>
 
 
